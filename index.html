@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fitness Tracker Pro</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Login/Register Screen -->
+    <div id="authScreen" class="auth-screen">
+        <div class="auth-container">
+            <h1>💪 Fitness Tracker Pro</h1>
+            <p class="subtitle">Your Personal Health & Fitness Journey</p>
+            
+            <!-- Login Form -->
+            <div id="loginForm" class="auth-form">
+                <h2>Welcome Back!</h2>
+                <div class="form-group">
+                    <label for="loginUsername">Username:</label>
+                    <input type="text" id="loginUsername" placeholder="Enter your username">
+                </div>
+                <div class="form-group">
+                    <label for="loginPassword">Password:</label>
+                    <input type="password" id="loginPassword" placeholder="Enter your password">
+                </div>
+                <button id="loginBtn" class="btn btn-primary">Login</button>
+                <p class="auth-switch">Don't have an account? <a href="#" id="showRegister">Register here</a></p>
+            </div>
+            
+            <!-- Register Form -->
+            <div id="registerForm" class="auth-form hidden">
+                <h2>Create Account</h2>
+                <div class="form-group">
+                    <label for="registerUsername">Username:</label>
+                    <input type="text" id="registerUsername" placeholder="Choose a username">
+                </div>
+                <div class="form-group">
+                    <label for="registerPassword">Password:</label>
+                    <input type="password" id="registerPassword" placeholder="Choose a password">
+                </div>
+                <div class="form-group">
+                    <label for="registerConfirmPassword">Confirm Password:</label>
+                    <input type="password" id="registerConfirmPassword" placeholder="Confirm your password">
+                </div>
+                <button id="registerBtn" class="btn btn-primary">Register</button>
+                <p class="auth-switch">Already have an account? <a href="#" id="showLogin">Login here</a></p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main App -->
+    <div id="mainApp" class="container hidden">
+        <header>
+            <div class="header-content">
+                <div>
+                    <h1>💪 Fitness Tracker Pro</h1>
+                    <p class="subtitle">Welcome back, <span id="usernameDisplay"></span>! 🎉</p>
+                </div>
+                <div class="header-actions">
+                    <div class="user-level">
+                        <span class="level-badge">Level <span id="userLevel">1</span></span>
+                        <span class="xp-display"><span id="userXP">0</span> XP</span>
+                    </div>
+                    <button id="logoutBtn" class="btn btn-logout">Logout</button>
+                </div>
+            </div>
+            <div class="xp-bar-container">
+                <div id="xpBar" class="xp-bar">
+                    <div id="xpProgress" class="xp-progress"></div>
+                </div>
+                <span class="xp-text"><span id="currentXP">0</span> / <span id="nextLevelXP">100</span> XP</span>
+            </div>
+        </header>
+
+        <!-- Gamification Dashboard -->
+        <section class="card gamification-dashboard">
+            <h2>🏆 Your Progress & Achievements</h2>
+            <div class="stats-overview">
+                <div class="stat-box">
+                    <div class="stat-icon">🔥</div>
+                    <div class="stat-info">
+                        <h3 id="streakCount">0</h3>
+                        <p>Day Streak</p>
+                    </div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-icon">🎯</div>
+                    <div class="stat-info">
+                        <h3 id="totalWorkouts">0</h3>
+                        <p>Total Workouts</p>
+                    </div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-icon">⭐</div>
+                    <div class="stat-info">
+                        <h3 id="badgesEarned">0</h3>
+                        <p>Badges Earned</p>
+                    </div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-icon">💧</div>
+                    <div class="stat-info">
+                        <h3 id="waterGlasses">0/8</h3>
+                        <p>Water Today</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Achievements Display -->
+            <div class="achievements-section">
+                <h3>🏅 Recent Achievements</h3>
+                <div id="achievementsList" class="achievements-grid">
+                    <!-- Achievements will be added dynamically -->
+                </div>
+            </div>
+
+            <!-- Daily Challenge -->
+            <div class="daily-challenge">
+                <h3>⚡ Today's Challenge</h3>
+                <div id="dailyChallenge" class="challenge-box">
+                    <p class="challenge-text">Complete your profile to unlock challenges!</p>
+                    <button id="completeChallengeBtn" class="btn btn-challenge hidden">Mark Complete (+50 XP)</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Quick Actions -->
+        <section class="card quick-actions">
+            <h2>⚡ Quick Actions</h2>
+            <div class="action-buttons">
+                <button id="logWorkoutBtn" class="action-btn">
+                    <span class="action-icon">🏋️</span>
+                    <span>Log Workout</span>
+                </button>
+                <button id="addWaterBtn" class="action-btn">
+                    <span class="action-icon">💧</span>
+                    <span>Add Water</span>
+                </button>
+                <button id="viewProgressBtn" class="action-btn">
+                    <span class="action-icon">📊</span>
+                    <span>View Progress</span>
+                </button>
+                <button id="viewBadgesBtn" class="action-btn">
+                    <span class="action-icon">🏅</span>
+                    <span>My Badges</span>
+                </button>
+            </div>
+        </section>
+
+        <main>
+            <!-- User Profile Section -->
+            <section class="card profile-section">
+                <h2>📊 Your Profile</h2>
+                <div class="form-group">
+                    <label for="height">Height (cm):</label>
+                    <input type="number" id="height" placeholder="Enter height in cm" min="100" max="250">
+                </div>
+                <div class="form-group">
+                    <label for="weight">Weight (kg):</label>
+                    <input type="number" id="weight" placeholder="Enter weight in kg" min="30" max="300">
+                </div>
+                <div class="form-group">
+                    <label for="age">Age (years):</label>
+                    <input type="number" id="age" placeholder="Enter age" min="10" max="120">
+                </div>
+                <div class="form-group">
+                    <label for="gender">Gender:</label>
+                    <select id="gender">
+                        <option value="male">Male</option>
+                        <option value="female">Female</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="activity">Activity Level:</label>
+                    <select id="activity">
+                        <option value="sedentary">Sedentary (little/no exercise)</option>
+                        <option value="light">Light (1-3 days/week)</option>
+                        <option value="moderate">Moderate (3-5 days/week)</option>
+                        <option value="active">Active (6-7 days/week)</option>
+                        <option value="veryactive">Very Active (twice per day)</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="goal">Fitness Goal:</label>
+                    <select id="goal">
+                        <option value="lose">Lose Weight</option>
+                        <option value="maintain">Maintain Weight</option>
+                        <option value="gain">Gain Weight/Muscle</option>
+                    </select>
+                </div>
+                <button id="calculateBtn" class="btn btn-primary">Calculate My Plan (+20 XP)</button>
+            </section>
+
+            <!-- Results Section -->
+            <div id="resultsSection" class="hidden">
+                <!-- BMI & Calorie Info -->
+                <section class="card stats-section">
+                    <h2>📈 Your Stats</h2>
+                    <div class="stats-grid">
+                        <div class="stat-card">
+                            <h3>BMI</h3>
+                            <p class="stat-value" id="bmiValue">-</p>
+                            <p class="stat-label" id="bmiCategory">-</p>
+                        </div>
+                        <div class="stat-card">
+                            <h3>Daily Calories</h3>
+                            <p class="stat-value" id="calorieValue">-</p>
+                            <p class="stat-label">Recommended intake</p>
+                        </div>
+                        <div class="stat-card">
+                            <h3>Goal Target</h3>
+                            <p class="stat-value" id="goalValue">-</p>
+                            <p class="stat-label">Per week</p>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Diet Plan -->
+                <section class="card diet-section">
+                    <h2>🥗 Personalized Diet Plan</h2>
+                    <div class="macros">
+                        <div class="macro-item">
+                            <span class="macro-label">Protein:</span>
+                            <span class="macro-value" id="proteinValue">-</span>
+                        </div>
+                        <div class="macro-item">
+                            <span class="macro-label">Carbs:</span>
+                            <span class="macro-value" id="carbsValue">-</span>
+                        </div>
+                        <div class="macro-item">
+                            <span class="macro-label">Fats:</span>
+                            <span class="macro-value" id="fatsValue">-</span>
+                        </div>
+                    </div>
+                    <div id="mealPlan" class="meal-plan"></div>
+                </section>
+
+                <!-- Exercise Plan -->
+                <section class="card exercise-section">
+                    <h2>🏋️ Exercise Plan</h2>
+                    <div id="exercisePlan" class="exercise-plan"></div>
+                    <div id="exerciseSchedule" class="schedule"></div>
+                </section>
+
+                <!-- Sleep Schedule -->
+                <section class="card sleep-section">
+                    <h2>😴 Sleep Schedule</h2>
+                    <div id="sleepSchedule" class="sleep-info"></div>
+                </section>
+
+                <!-- Calorie Counter -->
+                <section class="card calorie-counter">
+                    <h2>🍽️ Daily Calorie Tracker</h2>
+                    <div class="form-group">
+                        <label for="foodItem">Food Item:</label>
+                        <input type="text" id="foodItem" placeholder="e.g., Apple, Chicken breast">
+                    </div>
+                    <div class="form-group">
+                        <label for="foodCalories">Calories:</label>
+                        <input type="number" id="foodCalories" placeholder="Enter calories" min="0">
+                    </div>
+                    <button id="addFoodBtn" class="btn btn-secondary">Add Food (+5 XP)</button>
+                    <div class="calorie-summary">
+                        <h3>Today's Intake</h3>
+                        <p class="total-calories">Total: <span id="totalCalories">0</span> / <span id="targetCalories">0</span> cal</p>
+                        <div class="progress-bar">
+                            <div id="calorieProgress" class="progress-fill"></div>
+                        </div>
+                    </div>
+                    <div id="foodLog" class="food-log"></div>
+                </section>
+            </div>
+        </main>
+
+        <footer>
+            <p>💡 Tip: <span id="motivationalQuote">Consistency is key to achieving your fitness goals!</span></p>
+        </footer>
+    </div>
+
+    <!-- Achievement Popup -->
+    <div id="achievementPopup" class="achievement-popup hidden">
+        <div class="achievement-content">
+            <div class="achievement-icon">🎉</div>
+            <h3 id="achievementTitle">Achievement Unlocked!</h3>
+            <p id="achievementDescription">You earned a new badge!</p>
+            <div class="xp-earned">+<span id="xpEarned">0</span> XP</div>
+        </div>
+    </div>
+
+    <!-- All Badges Modal -->
+    <div id="badgesModal" class="modal hidden">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <h2>🏅 Your Badges Collection</h2>
+            <div id="allBadgesGrid" class="badges-grid">
+                <!-- Badges will be loaded here -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Progress Chart Modal -->
+    <div id="progressModal" class="modal hidden">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <h2>📊 Your Progress</h2>
+            <div id="progressChart" class="progress-chart">
+                <canvas id="weightChart"></canvas>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
