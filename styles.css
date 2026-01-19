@@ -788,34 +788,624 @@ footer {
     font-size: 1.1rem;
 }
 
-/* Responsive */
-@media (max-width: 768px) {
+/* Responsive Design for Mobile */
+
+/* Tablets and Small Laptops */
+@media (max-width: 1024px) {
+    .container {
+        padding: 0 15px;
+    }
+
     header h1 {
-        font-size: 2rem;
+        font-size: 2.2rem;
+    }
+
+    .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .achievements-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .badges-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+/* Mobile Devices (Portrait) */
+@media (max-width: 768px) {
+    body {
+        padding: 10px;
+    }
+
+    /* Header */
+    header h1 {
+        font-size: 1.8rem;
+    }
+
+    .subtitle {
+        font-size: 0.95rem;
     }
 
     .header-content {
         flex-direction: column;
         align-items: flex-start;
+        gap: 15px;
     }
 
-    .stats-grid {
-        grid-template-columns: 1fr;
+    .header-actions {
+        width: 100%;
+        justify-content: space-between;
     }
 
+    .level-badge {
+        font-size: 0.95rem;
+        padding: 6px 15px;
+    }
+
+    .xp-display {
+        font-size: 0.85rem;
+        padding: 4px 12px;
+    }
+
+    /* Cards */
     .card {
+        padding: 15px;
+        margin-bottom: 15px;
+    }
+
+    .card h2 {
+        font-size: 1.4rem;
+        margin-bottom: 15px;
+    }
+
+    /* Auth Screen */
+    .auth-container {
+        padding: 25px 20px;
+        margin: 0 10px;
+    }
+
+    .auth-container h1 {
+        font-size: 2rem;
+    }
+
+    .auth-form h2 {
+        font-size: 1.5rem;
+    }
+
+    /* Stats Overview */
+    .stats-overview {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+    }
+
+    .stat-box {
+        padding: 15px;
+        flex-direction: column;
+        text-align: center;
+        gap: 10px;
+    }
+
+    .stat-icon {
+        font-size: 2rem;
+    }
+
+    .stat-info h3 {
+        font-size: 1.5rem;
+    }
+
+    .stat-info p {
+        font-size: 0.85rem;
+    }
+
+    /* Quick Actions */
+    .action-buttons {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+    }
+
+    .action-btn {
         padding: 15px;
     }
 
+    .action-icon {
+        font-size: 2rem;
+    }
+
+    .action-btn span:last-child {
+        font-size: 0.9rem;
+    }
+
+    /* Stats Grid */
+    .stats-grid {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+
+    .stat-card {
+        padding: 15px;
+    }
+
+    .stat-value {
+        font-size: 1.8rem;
+    }
+
+    /* Macros */
+    .macros {
+        grid-template-columns: 1fr;
+        gap: 10px;
+    }
+
+    .macro-item {
+        padding: 12px;
+    }
+
+    /* Achievements */
+    .achievements-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+    }
+
+    .achievement-badge {
+        padding: 15px;
+    }
+
+    .badge-icon {
+        font-size: 2.5rem;
+    }
+
+    .badge-title {
+        font-size: 0.85rem;
+    }
+
+    .badge-description {
+        font-size: 0.7rem;
+    }
+
+    /* Daily Challenge */
+    .daily-challenge {
+        padding: 15px;
+    }
+
+    .daily-challenge h3 {
+        font-size: 1.1rem;
+    }
+
+    .challenge-text {
+        font-size: 1rem;
+    }
+
+    /* Exercise Plan */
+    .exercise-day {
+        padding: 12px;
+    }
+
+    .exercise-day h3 {
+        font-size: 1.1rem;
+    }
+
+    .exercise-item {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 5px;
+    }
+
+    .exercise-name {
+        font-size: 0.95rem;
+    }
+
+    .exercise-details {
+        font-size: 0.85rem;
+    }
+
+    /* Schedule */
+    .schedule-item {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 5px;
+        padding: 8px;
+    }
+
+    /* Meal Plan */
+    .meal {
+        padding: 12px;
+    }
+
+    .meal h3 {
+        font-size: 1.1rem;
+    }
+
+    .meal li {
+        font-size: 0.9rem;
+    }
+
+    /* Sleep Info */
+    .sleep-recommendation {
+        padding: 12px;
+    }
+
+    .sleep-recommendation h3 {
+        font-size: 1.1rem;
+    }
+
+    .sleep-recommendation ul {
+        font-size: 0.9rem;
+    }
+
+    /* Food Log */
+    .food-entry {
+        flex-wrap: wrap;
+        gap: 10px;
+        padding: 10px;
+    }
+
+    .food-name {
+        flex: 1 1 100%;
+        font-size: 0.95rem;
+    }
+
+    .food-calories {
+        font-size: 0.9rem;
+    }
+
+    .delete-btn {
+        padding: 5px 12px;
+        font-size: 0.85rem;
+    }
+
+    /* Buttons */
+    .btn {
+        padding: 10px 20px;
+        font-size: 0.95rem;
+    }
+
+    .btn-logout {
+        padding: 8px 20px;
+        font-size: 0.9rem;
+    }
+
+    /* Achievement Popup */
+    .achievement-popup {
+        width: 90%;
+        max-width: 350px;
+        padding: 25px 20px;
+    }
+
+    .achievement-icon {
+        font-size: 4rem;
+    }
+
+    .achievement-popup h3 {
+        font-size: 1.5rem;
+    }
+
+    .achievement-popup p {
+        font-size: 0.95rem;
+    }
+
+    .xp-earned {
+        font-size: 1.1rem;
+        padding: 8px 16px;
+    }
+
+    /* Modal */
+    .modal-content {
+        padding: 20px;
+        margin: 20px;
+        max-width: 95%;
+        max-height: 85vh;
+    }
+
+    .modal-content h2 {
+        font-size: 1.5rem;
+        margin-bottom: 15px;
+    }
+
+    .close-modal {
+        font-size: 1.8rem;
+        top: 10px;
+        right: 15px;
+    }
+
+    .badges-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+    }
+
+    /* Form Elements */
+    .form-group input,
+    .form-group select {
+        padding: 10px;
+        font-size: 0.95rem;
+    }
+
+    .form-group label {
+        font-size: 0.95rem;
+    }
+
+    /* Footer */
+    footer {
+        font-size: 1rem;
+        padding: 15px;
+        margin-top: 20px;
+    }
+
+    /* Calorie Summary */
+    .total-calories {
+        font-size: 1.1rem;
+    }
+
+    .progress-bar {
+        height: 25px;
+    }
+}
+
+/* Small Mobile Devices (320px - 480px) */
+@media (max-width: 480px) {
+    body {
+        padding: 5px;
+    }
+
+    /* Header */
+    header h1 {
+        font-size: 1.5rem;
+    }
+
+    .subtitle {
+        font-size: 0.85rem;
+    }
+
+    .level-badge {
+        font-size: 0.85rem;
+        padding: 5px 12px;
+    }
+
+    .xp-display {
+        font-size: 0.75rem;
+        padding: 3px 10px;
+    }
+
+    .xp-text {
+        font-size: 0.75rem;
+    }
+
+    /* Cards */
+    .card {
+        padding: 12px;
+        border-radius: 12px;
+    }
+
+    .card h2 {
+        font-size: 1.2rem;
+        padding-bottom: 8px;
+    }
+
+    /* Auth */
     .auth-container {
-        padding: 25px;
+        padding: 20px 15px;
     }
 
+    .auth-container h1 {
+        font-size: 1.8rem;
+    }
+
+    .auth-form h2 {
+        font-size: 1.3rem;
+        margin-bottom: 20px;
+    }
+
+    /* Stats Overview */
     .stats-overview {
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: 1fr;
+        gap: 8px;
     }
 
+    .stat-box {
+        padding: 12px;
+    }
+
+    .stat-icon {
+        font-size: 1.8rem;
+    }
+
+    .stat-info h3 {
+        font-size: 1.3rem;
+    }
+
+    /* Quick Actions */
     .action-buttons {
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: 1fr;
+        gap: 8px;
+    }
+
+    .action-btn {
+        padding: 12px;
+    }
+
+    .action-icon {
+        font-size: 1.8rem;
+    }
+
+    /* Achievements */
+    .achievements-grid {
+        grid-template-columns: 1fr;
+        gap: 8px;
+    }
+
+    .achievement-badge {
+        padding: 12px;
+    }
+
+    .badge-icon {
+        font-size: 2rem;
+    }
+
+    .badge-title {
+        font-size: 0.8rem;
+    }
+
+    .badge-description {
+        font-size: 0.65rem;
+    }
+
+    /* Daily Challenge */
+    .daily-challenge {
+        padding: 12px;
+    }
+
+    .daily-challenge h3 {
+        font-size: 1rem;
+    }
+
+    .challenge-text {
+        font-size: 0.9rem;
+    }
+
+    .btn-challenge {
+        font-size: 0.85rem;
+        padding: 8px 15px;
+    }
+
+    /* Macros */
+    .macro-value {
+        font-size: 1.1rem;
+    }
+
+    /* Exercise & Meal Plans */
+    .exercise-day,
+    .meal {
+        padding: 10px;
+    }
+
+    .exercise-day h3,
+    .meal h3 {
+        font-size: 1rem;
+    }
+
+    .exercise-name,
+    .meal li {
+        font-size: 0.85rem;
+    }
+
+    .exercise-details {
+        font-size: 0.8rem;
+    }
+
+    /* Achievement Popup */
+    .achievement-popup {
+        padding: 20px 15px;
+    }
+
+    .achievement-icon {
+        font-size: 3.5rem;
+        margin-bottom: 15px;
+    }
+
+    .achievement-popup h3 {
+        font-size: 1.3rem;
+    }
+
+    .achievement-popup p {
+        font-size: 0.9rem;
+    }
+
+    .xp-earned {
+        font-size: 1rem;
+        padding: 8px 15px;
+    }
+
+    /* Modal */
+    .modal-content {
+        padding: 15px;
+        margin: 10px;
+    }
+
+    .modal-content h2 {
+        font-size: 1.3rem;
+    }
+
+    .badges-grid {
+        grid-template-columns: 1fr;
+        gap: 10px;
+    }
+
+    /* Buttons */
+    .btn {
+        padding: 10px 18px;
+        font-size: 0.9rem;
+    }
+
+    /* Food Entry */
+    .food-entry {
+        padding: 8px;
+    }
+
+    .food-name {
+        font-size: 0.9rem;
+    }
+
+    .food-calories {
+        font-size: 0.85rem;
+    }
+
+    .delete-btn {
+        padding: 4px 10px;
+        font-size: 0.8rem;
+    }
+
+    /* Footer */
+    footer {
+        font-size: 0.9rem;
+        padding: 12px;
+    }
+}
+
+/* Landscape Orientation Fix for Mobile */
+@media (max-width: 768px) and (orientation: landscape) {
+    .auth-screen {
+        padding: 10px;
+    }
+
+    .auth-container {
+        max-height: 90vh;
+        overflow-y: auto;
+    }
+
+    .modal-content {
+        max-height: 80vh;
+    }
+
+    header h1 {
+        font-size: 1.5rem;
+    }
+
+    .card {
+        padding: 10px;
+    }
+}
+
+/* Touch-friendly improvements */
+@media (hover: none) and (pointer: coarse) {
+    /* Increase touch targets */
+    .btn,
+    .action-btn,
+    .delete-btn,
+    .close-modal {
+        min-height: 44px;
+        min-width: 44px;
+    }
+
+    input,
+    select,
+    button {
+        font-size: 16px; /* Prevents zoom on iOS */
+    }
+
+    /* Better spacing for touch */
+    .achievement-badge,
+    .stat-box,
+    .action-btn {
+        margin: 5px 0;
     }
 }
